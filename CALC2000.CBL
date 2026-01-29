@@ -32,36 +32,26 @@
        procedure division.
 
        000-calculate-future-values.
-
+           display "Calculating Future Values".
+      * First run
            perform 100-calculate-future-value
-               until number-entered = zero.
+      * Second run
+           compute investment-amount = investment-amount * 2.
+           perform 100-calculate-future-value.
+      * Third run
+           compute investment-amount = investment-amount * 2.
+           perform 100-calculate-future-value.
+
            display "End of session.".
            stop run.
 
        100-calculate-future-value.
 
-           display "----------------------------------------".
-           display "To end the program, enter 0.".
-           display "To perform another calculation, enter 1.".
-           accept  number-entered.
-           display "----------------------------------------".
-           if number-entered = 1
-               perform 110-get-user-values
-               move investment-amount to future-value
-               move 1 to year-counter
-               perform 120-calculate-next-fv
-                   until year-counter > number-of-years
-               move future-value to edited-future-value
-               display "Future value = " edited-future-value.
-
-       110-get-user-values.
-
-           display "Enter investment amount (xxxxx).".
-           accept  investment-amount.
-           display "Enter number of years (xx).".
-           accept  number-of-years.
-           display "Enter yearly interest rate (xx.x).".
-           accept  yearly-interest-rate.
+           move investment-amount to future-value
+           move 1 to year-counter
+           perform 120-calculate-next-fv
+              until year-counter > number-of-years
+           perform 140-display-values.
 
        120-calculate-next-fv.
 
@@ -69,4 +59,7 @@
                future-value +
                    (future-value * yearly-interest-rate / 100).
            add 1 to year-counter.
+      
+       140-display-values.
 
+       
