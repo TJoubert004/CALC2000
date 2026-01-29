@@ -26,10 +26,11 @@
 
        01  work-fields.
 
-           05  future-value                pic 9(7)v99.
-           05  year-counter                pic 999.
+           05  future-value            pic 9(7)v99.
+           05  year-counter            pic 999.
            05  edited-whole-value      pic zz,zzz,zz9.
            05  edited-decimal-value    pic zzz,zzz.99.
+           05  edited-intrest-rate     pic zzz,zzz9.9.
 
        procedure division.
 
@@ -65,9 +66,10 @@
        140-display-values.
 
            move investment-amount to edited-whole-value.
+           move yearly-interest-rate to edited-intrest-rate.
            display "-----------------------------------".
            display "Investment Amount = " edited-whole-value.
            display "Number of Years   = " number-of-years.
-           display "Yearly Interest   = " yearly-interest-rate.
+           display "Yearly Interest   = " edited-intrest-rate.
            move future-value to edited-decimal-value.
            display "Future value      = " edited-decimal-value.
